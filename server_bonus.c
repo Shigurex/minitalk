@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_bonus.c                                     :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yahokari <yahokari@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 23:32:35 by yahokari          #+#    #+#             */
-/*   Updated: 2022/06/24 17:58:49 by yahokari         ###   ########.fr       */
+/*   Updated: 2022/07/01 00:49:07 by yahokari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	receive_signal(int signal, siginfo_t *siginfo, void *text)
 	{
 		if (c == EOT)
 			send_acknowledge(siginfo->si_pid);
-		else
+		else if (c != '\0')
 			write(1, &c, 1);
 		i = 0;
 		c = 0;
